@@ -6,7 +6,13 @@ const puppeteer = require('puppeteer-extra');
     puppeteer.use(StealthPlugin())
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: '/usr/bin/google-chrome'
+        executablePath: '/usr/bin/google-chrome',
+        args: [
+            "--disable-gpu",
+            "--disable-dev-shm-usage",
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+        ]
     }); //  тут помекняешь на труе когда все заработает
     const page = await browser.newPage();
     await page.goto('https://business.kazanexpress.ru/');
