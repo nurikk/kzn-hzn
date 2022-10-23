@@ -13,12 +13,14 @@ RUN apt-get update && apt-get install gnupg wget -y && \
   rm -rf /var/lib/apt/lists/*
 
 
-USER node
+
 
 WORKDIR /usr/src/app
 COPY package*.json ./
 COPY run.js ./
+RUN chmod -R o+rwx /usr/bin/google-chrome
 
 RUN npm ci --only=production
 
+USER node
 CMD [ "node", "run.js" ]
