@@ -18,9 +18,9 @@ RUN apt-get update && apt-get install gnupg wget -y && \
 
 
 
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser
+RUN groupadd -r pptruser && useradd -m -r -g pptruser -G audio,video pptruser
 
-WORKDIR /home/app
+WORKDIR /home/pptruser
 COPY package*.json ./
 COPY run.js ./
 RUN chmod -R o+rwx /usr/bin/google-chrome
@@ -29,4 +29,4 @@ RUN npm ci --only=production
 
 
 USER pptruser
-CMD [ "node", "run.js" ]
+CMD ["xvfb-run", "--server-args", "-screen 0 1024x768x24", "node", "run.js" ]
