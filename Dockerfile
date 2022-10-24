@@ -18,10 +18,9 @@ RUN apt-get update && apt-get install gnupg wget -y && \
 
 
 
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && chown -R pptruser:pptruser /home/pptruser
+RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser
 
-WORKDIR /home/pptruser
+WORKDIR /home/app
 COPY package*.json ./
 COPY run.js ./
 RUN chmod -R o+rwx /usr/bin/google-chrome
