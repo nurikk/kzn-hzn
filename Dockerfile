@@ -29,4 +29,4 @@ RUN npm ci --only=production
 
 
 USER pptruser
-CMD ["xvfb-run", "--server-args", "-screen 0 1024x768x24", "node", "run.js" ]
+CMD ["xvfb-run", "node", "run.js"]
