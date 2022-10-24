@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer-extra');
     const StealthPlugin = require('puppeteer-extra-plugin-stealth')
     puppeteer.use(StealthPlugin())
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         executablePath: '/usr/bin/google-chrome',
         args: [
             "--disable-gpu",
