@@ -17,6 +17,7 @@ const puppeteer = require('puppeteer-extra');
     const page = await browser.newPage();
     await page.goto('https://business.kazanexpress.ru/');
     await page.waitForSelector('footer');
+    await page.waitForTimeout(5000);
     const cookies = await page.cookies()
     process.stdout.write(JSON.stringify({ "cookies": cookies.map(c => `${c.name}=${c.value}`).join(";") }));
     await browser.close();
